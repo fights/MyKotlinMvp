@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MultipleStatusView">
+        <attr name="loadingVIew" format="reference"/>
+        <attr name="errorVIew" format="reference"/>
+        <attr name="emptyVIew" format="reference"/>
+        <attr name="noNetworkVIew" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,21 @@
+ext{
+    android = [
+        compileSdkVersion: 26,
+        buildToolsVersion: "26.0.2",
+        minSdkVersion    : 19,
+        targetSdkVersion : 26,
+        versionCode      : 1,
+        versionName      : "1.0",
+        applicationId: "com.android.mykotlinmvp"
+    ]
+
+
+    dependVersion = [
+        androidSupportSdkVersion: "26.0.2",
+        retrofitSdkVersion: "2.3.0",
+        glideSdkVersion: "4.0.0",
+        rxJava: "2.1.5",
+        rxAndroid: "2.0.1"
+    ]
+
+}
