@@ -15,7 +15,8 @@ ext{
         retrofitSdkVersion: "2.3.0",
         glideSdkVersion: "4.0.0",
         rxJava: "2.1.5",
-        rxAndroid: "2.0.1"
+        rxAndroid: "2.0.1",
+        logVersion: "2.1.1"
     ]
 
 }
