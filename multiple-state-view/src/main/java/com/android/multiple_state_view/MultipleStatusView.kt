@@ -51,10 +51,10 @@ class MultipleStatusView(context: Context, attrs: AttributeSet?, defStyleAttr: I
     }
 
     private fun inflateViews() {
-        mEmptyView = LayoutInflater.from(mContext).inflate(this!!.mEmptyViewId!!, null)
-        mErrorView = LayoutInflater.from(mContext).inflate(this!!.mErrorViewId!!, null)
-        mLoadingView = LayoutInflater.from(mContext).inflate(this!!.mLoadingViewId!!, null)
-        mNoNetworkView = LayoutInflater.from(mContext).inflate(this!!.mNoNetworkViewId!!, null)
+        mEmptyView = LayoutInflater.from(mContext).inflate(this.mEmptyViewId!!, null)
+        mErrorView = LayoutInflater.from(mContext).inflate(this.mErrorViewId!!, null)
+        mLoadingView = LayoutInflater.from(mContext).inflate(this.mLoadingViewId!!, null)
+        mNoNetworkView = LayoutInflater.from(mContext).inflate(this.mNoNetworkViewId!!, null)
 
         addView(mEmptyView)
         addView(mErrorView)
