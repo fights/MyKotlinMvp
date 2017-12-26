@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyKotlinMvp</string>
+    <string name="save_log_permission_tips">异常崩溃记录</string>
 </resources>

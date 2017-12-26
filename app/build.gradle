@@ -35,4 +35,7 @@ dependencies {
 
     //log
     implementation "com.orhanobut:logger:$dependVersion.logVersion"
+
+    //运行时权限
+    implementation "me.weyye.hipermission:library:$dependVersion.runtime_permission_version"
 }
