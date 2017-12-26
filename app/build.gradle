@@ -30,25 +30,22 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$dependVersion.androidSupportSdkVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     //log
     implementation "com.orhanobut:logger:$dependVersion.logVersion"
-
     //运行时权限
     implementation "me.weyye.hipermission:library:$dependVersion.runtime_permission_version"
-
     //bugly
     implementation "com.tencent.bugly:crashreport:$dependVersion.bugly_sdk_version"
     implementation "com.tencent.bugly:nativecrashreport:$dependVersion.bugly_ndk_version"
-
     //LeakCanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$dependVersion.leakCanary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$dependVersion.leakCanary_version"
+    implementation project(':multiple-state-view')
 }
