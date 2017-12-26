@@ -7,6 +7,8 @@ import android.os.HandlerThread
 import com.android.mykotlinmvp.logger.CustomLogSaveHandler
 import com.android.mykotlinmvp.utils.Constants
 import com.orhanobut.logger.*
+import com.squareup.leakcanary.LeakCanary
+import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.crashreport.CrashReport
 import me.weyye.hipermission.HiPermission
 import me.weyye.hipermission.PermissionCallback
@@ -20,10 +22,17 @@ import kotlin.properties.Delegates
  */
 class MyApplication: Application() {
 
+    private var refWatcher: RefWatcher by Delegates.notNull()
+
     companion object {
         var context: Context by Delegates.notNull()
             private set
         val MAX_BYTES: Int = 500*1024
+
+        fun getRefWatcher(): RefWatcher {
+            val myApplication = context as MyApplication
+            return myApplication.refWatcher
+        }
     }
 
     var isDebugMode: Boolean = BuildConfig.DEBUG
@@ -37,6 +46,16 @@ class MyApplication: Application() {
 
         //配置腾讯bugly
         initTencentBugly()
+
+        //配置LeakCanary
+        refWatcher = initLeakCanary()
+    }
+
+    private fun initLeakCanary(): RefWatcher {
+        return if(LeakCanary.isInAnalyzerProcess(context))
+            RefWatcher.DISABLED
+        else
+            LeakCanary.install(this)
     }
 
     private fun initTencentBugly() {

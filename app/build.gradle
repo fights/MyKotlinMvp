@@ -44,6 +44,11 @@ dependencies {
     //运行时权限
     implementation "me.weyye.hipermission:library:$dependVersion.runtime_permission_version"
 
+    //bugly
     implementation "com.tencent.bugly:crashreport:$dependVersion.bugly_sdk_version"
     implementation "com.tencent.bugly:nativecrashreport:$dependVersion.bugly_ndk_version"
+
+    //LeakCanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$dependVersion.leakCanary_version"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$dependVersion.leakCanary_version"
 }
