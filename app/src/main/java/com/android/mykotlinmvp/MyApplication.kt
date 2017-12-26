@@ -6,6 +6,7 @@ import android.os.Environment
 import android.os.HandlerThread
 import com.android.mykotlinmvp.logger.CustomLogSaveHandler
 import com.orhanobut.logger.*
+import com.tencent.bugly.crashreport.CrashReport
 import me.weyye.hipermission.HiPermission
 import me.weyye.hipermission.PermissionCallback
 import me.weyye.hipermission.PermissionItem
@@ -24,6 +25,8 @@ class MyApplication: Application() {
         val MAX_BYTES: Int = 500*1024
     }
 
+    var isDebugMode: Boolean = BuildConfig.DEBUG
+
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
@@ -31,7 +34,12 @@ class MyApplication: Application() {
         //配置log日志配置
         initLogConfig()
 
+        initTencentBugly()
+    }
 
+    private fun initTencentBugly() {
+
+        CrashReport.initCrashReport(applicationContext,"c464352b31",isDebugMode)
     }
 
     /**
@@ -46,7 +54,7 @@ class MyApplication: Application() {
 
         Logger.addLogAdapter(object :AndroidLogAdapter(formatStrategy){
             override fun isLoggable(priority: Int, tag: String?): Boolean {
-                return BuildConfig.DEBUG
+                return isDebugMode
             }
         })
 

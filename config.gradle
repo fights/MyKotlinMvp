@@ -17,7 +17,9 @@ ext{
         rxJava: "2.1.5",
         rxAndroid: "2.0.1",
         logVersion: "2.1.1",
-        runtime_permission_version:"1.0.7"
+        runtime_permission_version:"1.0.7",
+        bugly_sdk_version:"2.6.6.1",
+        bugly_ndk_version:"3.3.1"
     ]
 
 }
