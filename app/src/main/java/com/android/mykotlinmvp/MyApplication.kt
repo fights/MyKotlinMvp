@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Environment
 import android.os.HandlerThread
 import com.android.mykotlinmvp.logger.CustomLogSaveHandler
+import com.android.mykotlinmvp.utils.Constants
 import com.orhanobut.logger.*
 import com.tencent.bugly.crashreport.CrashReport
 import me.weyye.hipermission.HiPermission
@@ -34,12 +35,13 @@ class MyApplication: Application() {
         //配置log日志配置
         initLogConfig()
 
+        //配置腾讯bugly
         initTencentBugly()
     }
 
     private fun initTencentBugly() {
 
-        CrashReport.initCrashReport(applicationContext,"c464352b31",isDebugMode)
+        CrashReport.initCrashReport(applicationContext,Constants.TENCENT_BUGLY_APPID,isDebugMode)
     }
 
     /**
