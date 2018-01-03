@@ -23,3 +23,6 @@
 # bugly混淆
 #-dontwarn com.tencent.bugly.**
 #-keep public class com.tencent.bugly.**{*;}
+
+#高斯模糊混淆
+#-keep class android.support.v8.renderscript.** { *; }
