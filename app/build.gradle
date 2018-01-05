@@ -16,20 +16,30 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        //支持高斯模糊
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true    // Enable RS support
+
         // tencent bugly设置支持的SO库架构
         ndk{
             abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
 
-        //支持高斯模糊
-        renderscriptTargetApi 19
-        renderscriptSupportModeEnabled true    // Enable RS support
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        jumboMode true
     }
 }
 

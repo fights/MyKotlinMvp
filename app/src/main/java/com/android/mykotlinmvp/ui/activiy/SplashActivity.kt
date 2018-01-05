@@ -2,6 +2,7 @@ package com.android.mykotlinmvp.ui.activiy
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Typeface
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -92,7 +93,8 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun jumpHomeActivity() {
-
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
 
     override fun getData() {

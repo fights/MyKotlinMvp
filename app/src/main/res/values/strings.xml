@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MyKotlinMvp</string>
     <string name="save_log_permission_tips">异常崩溃记录</string>
+    <string name="toast_when_click_back">再点击一次退出程序</string>
 </resources>
