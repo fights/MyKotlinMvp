@@ -6,5 +6,6 @@ package com.android.mykotlinmvp.utils
 class Constants{
     companion object {
         val TENCENT_BUGLY_APPID = "c464352b31"
+        val BASE_URL = "http://baobab.kaiyanapp.com/api/"
     }
 }

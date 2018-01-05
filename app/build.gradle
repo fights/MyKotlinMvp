@@ -68,4 +68,17 @@ dependencies {
 
     //底部切换按钮
     implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$dependVersion.flycotablayout_version"
-}
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$dependVersion.retrofitSdkVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$dependVersion.retrofitSdkVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$dependVersion.retrofitSdkVersion"
+
+    //Rxjava Rxandroid
+    implementation "io.reactivex.rxjava2:rxjava:$dependVersion.rxJava"
+    implementation "io.reactivex.rxjava2:rxandroid:$dependVersion.rxAndroid"
+
+    //使用kotlin注解
+    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+
+    }
