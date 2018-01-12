@@ -51,13 +51,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
     //log
     implementation "com.orhanobut:logger:$dependVersion.logVersion"
+
     //运行时权限
     implementation "me.weyye.hipermission:library:$dependVersion.runtime_permission_version"
+
     //bugly
     implementation "com.tencent.bugly:crashreport:$dependVersion.bugly_sdk_version"
     implementation "com.tencent.bugly:nativecrashreport:$dependVersion.bugly_ndk_version"
+
     //LeakCanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$dependVersion.leakCanary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$dependVersion.leakCanary_version"
@@ -82,6 +86,10 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$dependVersion.okhttp_logging_version"
 
     //使用kotlin注解
-    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+//    kapt 'com.github.bumptech.glide:compiler:4.4.0'
 
-    }
+    //下拉刷新控件
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:$dependVersion.smartrefresh_version"
+    implementation "com.scwang.smartrefresh:SmartRefreshHeader:$dependVersion.smartrefresh_version"
+    implementation "com.android.support:recyclerview-v7:$dependVersion.androidSupportSdkVersion"
+}

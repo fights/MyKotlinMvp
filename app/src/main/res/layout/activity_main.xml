@@ -29,7 +29,7 @@
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/height_tab_layout"
         android:background="@color/color_white"
         android:layout_alignParentBottom="true"
         app:tl_indicator_height="0dp"

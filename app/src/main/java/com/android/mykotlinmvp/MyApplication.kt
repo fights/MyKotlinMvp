@@ -67,15 +67,27 @@ class MyApplication: Application() {
      * 设置在debug模式下在logcat中显示log，在release模式下将log保存在文件中
      */
     private fun initLogConfig() {
-        val formatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)
-                .tag("MyTag")
-                .methodCount(2)
-                .build()
+//        val formatStrategy = PrettyFormatStrategy.newBuilder()
+//                .showThreadInfo(false)
+//                .tag("MyTag")
+//                .methodCount(2)
+//                .build()
+//
+//        Logger.addLogAdapter(object :AndroidLogAdapter(formatStrategy){
+//            override fun isLoggable(priority: Int, tag: String?): Boolean {
+//                return true
+//            }
+//        })
 
-        Logger.addLogAdapter(object :AndroidLogAdapter(formatStrategy){
+        val formatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(false)  // 隐藏线程信息 默认：显示
+                .methodCount(0)         // 决定打印多少行（每一行代表一个方法）默认：2
+                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+                .tag("hao_zz")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .build()
+        Logger.addLogAdapter(object : AndroidLogAdapter(formatStrategy) {
             override fun isLoggable(priority: Int, tag: String?): Boolean {
-                return isDebugMode
+                return BuildConfig.DEBUG
             }
         })
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.multiple_state_view.MultipleStatusView
+import com.orhanobut.logger.Logger
 
 /**
  * Created by zhangguanjun on 2017/12/29.
@@ -14,7 +15,6 @@ import com.android.multiple_state_view.MultipleStatusView
 abstract class BaseFragment: Fragment(){
     protected var mRootView: View? = null
     private var mIsViewCreated = false
-    private var mIsVisibleToUser = false
     private var mHasLoadData = false
 
     protected var mMutipleStatusView: MultipleStatusView? = null
@@ -32,13 +32,15 @@ abstract class BaseFragment: Fragment(){
         initListener()
         mMutipleStatusView?.setOnRetryClickListener(mRetryClickListener)
         mIsViewCreated = true
+        Logger.d("onViewCreated:  mIsVisibleToUser : $userVisibleHint , mHasLoadData: $mHasLoadData , mIsViewCreated: $mIsViewCreated")
         lazyLoadDataIfPrepared()
     }
 
     open var mRetryClickListener = View.OnClickListener { loadData() }
 
     private fun lazyLoadDataIfPrepared() {
-        if (mIsVisibleToUser && !mHasLoadData && mIsVisibleToUser) {
+        Logger.d("mIsVisibleToUser : $userVisibleHint , mHasLoadData: $mHasLoadData , mIsViewCreated: $mIsViewCreated")
+        if (userVisibleHint && !mHasLoadData && mIsViewCreated) {
             loadData()
             mHasLoadData = true
         }

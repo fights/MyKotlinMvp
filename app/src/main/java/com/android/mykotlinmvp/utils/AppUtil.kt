@@ -23,6 +23,12 @@ class AppUtil private constructor(){
             return context.packageManager.getPackageInfo(context.packageName, 0).versionCode
         }
 
+        /**
+         * 获取手机品牌和型号
+         */
+        fun getPhoneModel(): String = android.os.Build.MANUFACTURER + ":" + android.os.Build.MODEL
+
+
     }
 
 }
