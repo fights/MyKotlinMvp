@@ -24,7 +24,8 @@ ext{
         realtimeblurview_version:"1.1.0",
         flycotablayout_version:"2.1.2@aar",
         okhttp_logging_version: "3.4.1",
-        smartrefresh_version: "1.0.4-7"
+        smartrefresh_version: "1.0.4-7",
+        bga_banner_version:"2.2.2@aar",
     ]
 
 }

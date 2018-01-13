@@ -92,4 +92,7 @@ dependencies {
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$dependVersion.smartrefresh_version"
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$dependVersion.smartrefresh_version"
     implementation "com.android.support:recyclerview-v7:$dependVersion.androidSupportSdkVersion"
+
+    //自动轮播图
+    implementation "cn.bingoogolapple:bga-banner:$dependVersion.bga_banner_version"
 }
