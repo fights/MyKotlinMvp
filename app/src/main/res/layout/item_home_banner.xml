@@ -14,7 +14,7 @@
         app:banner_transitionEffect="defaultEffect"
         app:banner_tipTextColor="@color/color_title_bg"
         app:banner_tipTextSize="16sp"
-        app:banner_pointAutoPlayInterval="1000"
+        app:banner_pointAutoPlayInterval="2000"
         />
 
 </RelativeLayout>

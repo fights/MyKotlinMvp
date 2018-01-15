@@ -1,11 +1,16 @@
 package com.android.mykotlinmvp.ui.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.android.mykotlinmvp.R
+import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.BaseAdapter
 import com.android.mykotlinmvp.view.recyclerview.ViewHolder
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import io.reactivex.Observable
 
@@ -43,7 +48,24 @@ class HomeAdapter(var context: Context, private var mItemList: ArrayList<HomeBea
                             bannerTitleList.add(item.data.title)
                         }
 
+                bgaBanner.apply{
+                    setAutoPlayAble(mBannerSize > 1)
+                    setAdapter(object : BGABanner.Adapter<ImageView,String>{
+                        override fun fillBannerItem(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+                            GlideApp.with(mContext)
+                                    .load(model)
+                                    .transition(DrawableTransitionOptions().crossFade())
+                                    .placeholder(R.mipmap.ic_launcher)
+                                    .into(itemView)
+                        }
+                    })
 
+                    setData(bannerImgList,bannerTitleList)
+
+                    setDelegate{_, itemView, _, position ->
+                        goToVideoDetailActivity(mContext as Activity, itemView , mData[position])
+                    }
+                }
             }
             ITEM_TITLE ->{
 
@@ -52,6 +74,10 @@ class HomeAdapter(var context: Context, private var mItemList: ArrayList<HomeBea
 
             }
         }
+    }
+
+    private fun goToVideoDetailActivity(activity: Activity, itemView: View?, item: HomeBean.Issue.Item) {
+
     }
 
     override fun getItemCount(): Int {

@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun showHomeData(homeBean: HomeBean) {
         Logger.d(homeBean)
 
-        mHomeAdapter = HomeAdapter(activity, homeBean.issueList[0].itemList)
+        mHomeAdapter = HomeAdapter(activity!!, homeBean.issueList[0].itemList)
         mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
         mRecyclerView.layoutManager = mLinearLayoutManager
         mRecyclerView.adapter = mHomeAdapter
@@ -133,7 +133,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     private fun getColor(color_translucent: Int): Int {
-        return activity.resources.getColor(color_translucent)
+        return activity!!.resources.getColor(color_translucent)
     }
 
     override fun initView() {

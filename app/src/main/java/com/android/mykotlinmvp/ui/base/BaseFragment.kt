@@ -19,14 +19,14 @@ abstract class BaseFragment: Fragment(){
 
     protected var mMutipleStatusView: MultipleStatusView? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mRootView = inflater?.inflate(getLayoutId(),null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        mRootView = inflater.inflate(getLayoutId(),null)
         return mRootView!!
     }
 
     abstract fun getLayoutId(): Int
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initListener()
