@@ -1,12 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/iv_ihv_video_img"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@mipmap/ic_mine_normal"
+        android:scaleType="fitXY"
         />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/iv_ihv_author"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="15dp"
+            android:layout_centerVertical="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_ihv_author"
+            android:layout_toStartOf="@+id/tv_ihv_category"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_ihv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:targetApi="O"
+                tools:text="我是title，测试的title"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/tv_ihv_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                tools:text="我是测试tag"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_ihv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            tools:text="#旅游"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_darker_gray" />
+
+</LinearLayout>

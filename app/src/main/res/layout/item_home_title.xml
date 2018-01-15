@@ -4,10 +4,13 @@
     android:layout_height="?attr/actionBarSize">
 
     <TextView
+        android:id="@+id/tv_home_header"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="i am header"
         android:textColor="#000"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
         />
 
 </RelativeLayout>

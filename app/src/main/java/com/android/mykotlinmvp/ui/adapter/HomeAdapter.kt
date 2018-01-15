@@ -1,10 +1,12 @@
 package com.android.mykotlinmvp.ui.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.view.glide.GlideApp
@@ -68,11 +70,57 @@ class HomeAdapter(var context: Context, private var mItemList: ArrayList<HomeBea
                 }
             }
             ITEM_TITLE ->{
-
+                holder.getView<TextView>(R.id.tv_home_header).text = mData[position + mBannerSize -1]
+                        .data?.text ?: ""
             }
             ITEM_VIDEO ->{
-
+                dealVideoItemData(holder, mData[position + mBannerSize -1])
             }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun dealVideoItemData(holder: ViewHolder, item: HomeBean.Issue.Item) {
+        holder.apply {
+            val ivVideo = getView<ImageView>(R.id.iv_ihv_video_img)
+            val ivAuthor = getView<ImageView>(R.id.iv_ihv_author)
+            val tvTitle = getView<TextView>(R.id.tv_ihv_title)
+            val tvTag = getView<TextView>(R.id.tv_ihv_tag)
+            val tvCategory = getView<TextView>(R.id.tv_ihv_category)
+
+            //视频图片
+            GlideApp.with(mContext)
+                    .load(item.data?.cover?.feed)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .into(ivVideo)
+
+            val authorIcon = item.data?.author?.icon ?: item.data?.provider?.icon
+
+            // 作者头像
+            GlideApp.with(mContext)
+                    .load(authorIcon)
+                    .placeholder(R.mipmap.default_avatar)
+                    .error(R.mipmap.default_avatar)
+                    .circleCrop()
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .into(ivAuthor)
+
+            // 标题
+            tvTitle.text = item.data?.title ?: ""
+
+            //Category
+            tvCategory.text = "#${item.data?.category}"
+
+            //tag
+            var tagText = "#"
+            item.data?.tags?.take(4)?.forEach {
+                tagText += (it.name + "/")
+            }
+
+            var videoDuration = com.android.mykotlinmvp.utils.Util.durationFormat(item.data?.duration!!)
+            tvTag.text = tagText + videoDuration
         }
     }
 
