@@ -19,6 +19,8 @@ class MultipleStatusView(context: Context, attrs: AttributeSet?, defStyleAttr: I
         public val STATUS_NO_NETWORK = 4
         public var mCurrentState = STATUS_CONTENT
         private val TAG = this::class.java.simpleName
+        val DEFAULT_LAYOUT_PARAMS = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT)
     }
 
     private var mContext: Context? = null
@@ -30,6 +32,7 @@ class MultipleStatusView(context: Context, attrs: AttributeSet?, defStyleAttr: I
     private var mErrorView: View? = null
     private var mLoadingView: View? = null
     private var mNoNetworkView: View? = null
+    private var mOtherIds = ArrayList<Int>()
 
 
     constructor(context: Context, attrs: AttributeSet?):this(context, attrs,-1)
@@ -56,10 +59,15 @@ class MultipleStatusView(context: Context, attrs: AttributeSet?, defStyleAttr: I
         mLoadingView = LayoutInflater.from(mContext).inflate(this.mLoadingViewId!!, null)
         mNoNetworkView = LayoutInflater.from(mContext).inflate(this.mNoNetworkViewId!!, null)
 
-        addView(mEmptyView)
-        addView(mErrorView)
-        addView(mLoadingView)
-        addView(mNoNetworkView)
+        addView(mEmptyView,0, DEFAULT_LAYOUT_PARAMS)
+        addView(mErrorView,0, DEFAULT_LAYOUT_PARAMS)
+        addView(mLoadingView,0, DEFAULT_LAYOUT_PARAMS)
+        addView(mNoNetworkView,0, DEFAULT_LAYOUT_PARAMS)
+
+        mOtherIds.add(mEmptyView?.id!!)
+        mOtherIds.add(mErrorView?.id!!)
+        mOtherIds.add(mLoadingView?.id!!)
+        mOtherIds.add(mNoNetworkView?.id!!)
         showContent()
     }
 
@@ -92,25 +100,25 @@ class MultipleStatusView(context: Context, attrs: AttributeSet?, defStyleAttr: I
     }
 
     private fun showSingleView(view: View?) {
-        if (view == mEmptyView)
-            mEmptyView?.visibility = View.VISIBLE
-        else
-            mEmptyView?.visibility = View.GONE
 
-        if (view == mErrorView)
-            mErrorView?.visibility = View.VISIBLE
-        else
-            mErrorView?.visibility = View.GONE
+        (0..childCount)
+                .map { getChildAt(it) }
+                .forEach {
+                    if (view != null) {
+                        if (it?.id == view.id) {
+                            it.visibility = View.VISIBLE
+                        }else{
+                            it?.visibility = View.GONE
+                        }
+                    }else{
+                        if (mOtherIds.contains(it?.id)) {
+                            it?.visibility = View.GONE
+                        }else{
+                            it?.visibility = View.VISIBLE
+                        }
+                    }
+                }
 
-        if (view == mNoNetworkView)
-            mNoNetworkView?.visibility = View.VISIBLE
-        else
-            mNoNetworkView?.visibility = View.GONE
-
-        if (view == mLoadingView)
-            mLoadingView?.visibility = View.VISIBLE
-        else
-            mLoadingView?.visibility = View.GONE
     }
 
     public fun setOnRetryClickListener(onRetryClickListener: OnClickListener){
