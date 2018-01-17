@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     override fun showHomeData(homeBean: HomeBean) {
         Logger.d(homeBean)
-
+        mIsRefresh = false
         mHomeAdapter = HomeAdapter(activity!!, homeBean.issueList[0].itemList)
         mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
         mRecyclerView.layoutManager = mLinearLayoutManager
@@ -49,6 +49,8 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun showError(msg: String, errorCode: Int) {
+        mIsOnLoading = false
+        mIsRefresh = false
         when (errorCode) {
             ErrorStatus.NETWORK_ERROR -> mMutipleStatusView?.showNoNetwork()
             else -> mMutipleStatusView?.showError()
@@ -68,6 +70,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             mIsRefresh = false
             mRefreshLayout.finishRefresh()
         }
+        mIsOnLoading = false
         mMutipleStatusView?.showContent()
     }
 
@@ -99,7 +102,16 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                  */
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     //参数>0表示判断是否能够向下滚动， <0表示判断是否能够向上滚动
-                    if (!mRecyclerView.canScrollVertically(1) && !mIsOnLoading) {
+//                    if (!mRecyclerView.canScrollVertically(1) && !mIsOnLoading) {
+//                        mIsOnLoading = true
+//                        mHomePresenter.loadMoreData()
+//                    }
+
+                    val linearLayoutManager = mRecyclerView.layoutManager as LinearLayoutManager
+                    val childCount = mRecyclerView.childCount
+                    val itemCount = linearLayoutManager.itemCount
+                    val findFirstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+                    if (childCount + findFirstVisibleItemPosition == itemCount && !mIsOnLoading) {
                         mIsOnLoading = true
                         mHomePresenter.loadMoreData()
                     }
