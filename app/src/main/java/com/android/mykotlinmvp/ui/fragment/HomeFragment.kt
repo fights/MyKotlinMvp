@@ -55,6 +55,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             ErrorStatus.NETWORK_ERROR -> mMutipleStatusView?.showNoNetwork()
             else -> mMutipleStatusView?.showError()
         }
+
+        //当出现异常时，将toolBar设置为透明
+        mToolBar.setBackgroundColor(getColor(R.color.color_translucent))
+        mIvSearch.setImageResource(R.mipmap.ic_action_search_white)
+        mHeaderTitle.text = ""
     }
 
     override fun showLoading() {
