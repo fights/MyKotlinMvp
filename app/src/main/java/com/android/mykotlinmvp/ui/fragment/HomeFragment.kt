@@ -1,12 +1,16 @@
 package com.android.mykotlinmvp.ui.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.HomeContract
 import com.android.mykotlinmvp.mvp.presenter.HomePresenter
+import com.android.mykotlinmvp.ui.activiy.SearchActivity
 import com.android.mykotlinmvp.ui.adapter.HomeAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
@@ -147,6 +151,17 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 }
             }
         })
+
+        mIvSearch.setOnClickListener {
+            //跳转到搜索界面
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                //使用转场动画
+                val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as Activity, mIvSearch, activity?.getString(R.string.search_transition_name)!!)
+                startActivity(Intent(activity,SearchActivity::class.java),optionsCompat.toBundle())
+            }else{
+                startActivity(Intent(activity,SearchActivity::class.java))
+            }
+        }
     }
 
     private fun getColor(color_translucent: Int): Int {
