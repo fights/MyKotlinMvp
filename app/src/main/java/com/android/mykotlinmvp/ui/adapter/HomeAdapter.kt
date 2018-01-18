@@ -3,12 +3,16 @@ package com.android.mykotlinmvp.ui.adapter
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.android.mykotlinmvp.R
+import com.android.mykotlinmvp.ui.activiy.VideoDetailActivity
 import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.BaseAdapter
 import com.android.mykotlinmvp.view.recyclerview.ViewHolder
@@ -121,11 +125,26 @@ class HomeAdapter(var context: Context, private var mItemList: ArrayList<HomeBea
 
             var videoDuration = com.android.mykotlinmvp.utils.Util.durationFormat(item.data?.duration!!)
             tvTag.text = tagText + videoDuration
+
+            ivVideo.setOnClickListener {
+                goToVideoDetailActivity(mContext as Activity, ivVideo, item)
+            }
         }
     }
 
     private fun goToVideoDetailActivity(activity: Activity, itemView: View?, item: HomeBean.Issue.Item) {
-
+        val intent = Intent(activity, VideoDetailActivity::class.java)
+        intent.putExtra(VideoDetailActivity.VIDEO_DATA,item)
+        intent.putExtra(VideoDetailActivity.IS_TRANSITION,true)
+        //当SDK版本大于21时，支持转场动画
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            val pair = Pair(itemView,VideoDetailActivity.TRANSITION_NAME)
+            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair)
+            activity.startActivity(intent,optionsCompat.toBundle())
+        }else{
+            activity.startActivity(intent)
+            activity.overridePendingTransition(R.anim.anim_activity_in,R.anim.anim_activity_out)
+        }
     }
 
     override fun getItemCount(): Int {
