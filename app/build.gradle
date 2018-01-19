@@ -101,4 +101,9 @@ dependencies {
 
     //自动轮播图
     implementation "cn.bingoogolapple:bga-banner:$dependVersion.bga_banner_version"
+
+    //视频播放控件
+    implementation ("com.shuyu:GSYVideoPlayer:$dependVersion.video_player_version"){
+            exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
 }

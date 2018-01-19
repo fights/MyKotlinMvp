@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.SparseArray
 import android.view.View
 
+@Suppress("UNCHECKED_CAST")
 /**
  * Created by zhangguanjun on 2018/1/13.
  */

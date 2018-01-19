@@ -37,3 +37,9 @@
 #
 ## for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+#视频播放
+#-keep class tv.danmaku.ijk.** { *; }
+#-dontwarn tv.danmaku.ijk.**
+#-keep class com.shuyu.gsyvideoplayer.** { *; }
+#-dontwarn com.shuyu.gsyvideoplayer.**

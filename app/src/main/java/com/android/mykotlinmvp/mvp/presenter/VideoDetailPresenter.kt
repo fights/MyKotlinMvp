@@ -42,7 +42,7 @@ class VideoDetailPresenter : VideoDetailContract.Presenter, BasePresenter<VideoD
                 }
             }else{
                 //当没有时， 就播放默认的url地址的视频
-                mRootView?.setVideo(item.data?.playUrl)
+                mRootView?.setVideo(item.data.playUrl)
             }
         }
 
