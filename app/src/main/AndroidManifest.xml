@@ -32,7 +32,8 @@
         <activity android:name=".ui.activiy.MainActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activiy.VideoDetailActivity"/>
+        <activity android:name=".ui.activiy.VideoDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".ui.activiy.SearchActivity"
             android:screenOrientation="portrait"/>
     </application>

@@ -19,4 +19,10 @@ object NetUtil{
         }
         return false
     }
+
+    fun isWifi(): Boolean{
+        val connectivityManager = MyApplication.context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetInfo = connectivityManager.activeNetworkInfo
+        return activeNetInfo != null && activeNetInfo.type == ConnectivityManager.TYPE_WIFI
+    }
 }

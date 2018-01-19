@@ -23,5 +23,9 @@ interface ApiService{
     @GET
     fun getMoreHomeData(@Url url: String): Flowable<HomeBean>
 
-
+    /**
+     * 获取相关视频
+     */
+    @GET("v4/video/related?")
+    fun getRelativeVideos(@Query("id") id: Long): Flowable<HomeBean.Issue>
 }
