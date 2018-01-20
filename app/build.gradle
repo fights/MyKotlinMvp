@@ -50,7 +50,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 
     //log
     implementation "com.orhanobut:logger:$dependVersion.logVersion"
@@ -71,7 +73,9 @@ dependencies {
     implementation "com.github.mmin18:realtimeblurview:$dependVersion.realtimeblurview_version"
 
     //底部切换按钮
-    implementation "com.flyco.tablayout:FlycoTabLayout_Lib:$dependVersion.flycotablayout_version"
+    implementation ("com.flyco.tablayout:FlycoTabLayout_Lib:$dependVersion.flycotablayout_version") {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$dependVersion.retrofitSdkVersion"
@@ -88,7 +92,9 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$dependVersion.Glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$dependVersion.Glide_version"
-    implementation "com.github.bumptech.glide:okhttp3-integration:$dependVersion.Glide_version"
+    implementation ("com.github.bumptech.glide:okhttp3-integration:$dependVersion.Glide_version") {
+        exclude group: 'glide-parent'
+    }
 
     //Glide中使用kotlin
     kapt "com.github.bumptech.glide:compiler:$dependVersion.Glide_version"
@@ -102,8 +108,8 @@ dependencies {
     //自动轮播图
     implementation "cn.bingoogolapple:bga-banner:$dependVersion.bga_banner_version"
 
-    //视频播放控件
-    implementation ("com.shuyu:GSYVideoPlayer:$dependVersion.video_player_version"){
-            exclude group: 'com.android.support', module: 'appcompat-v7'
+    //视频播放控件, 去除V4包, 因为会版本冲突,造成打包不成功
+    implementation ("com.shuyu:GSYVideoPlayer:$dependVersion.video_player_version") {
+        exclude group: 'com.android.support', module: 'support-v4'
     }
 }
