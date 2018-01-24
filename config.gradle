@@ -25,7 +25,8 @@ ext{
         realtimeblurview_version:"1.1.0",
         flycotablayout_version:"2.1.2@aar",
         okhttp_logging_version: "3.4.1",
-        smartrefresh_version: "1.0.4-7",
+            // 1.0.4-7版本有问题，使用1.0.3
+        smartrefresh_version: "1.0.3",
         bga_banner_version:"2.2.2@aar",
         Glide_version:"4.4.0",
         video_player_version:"3.0.0"
