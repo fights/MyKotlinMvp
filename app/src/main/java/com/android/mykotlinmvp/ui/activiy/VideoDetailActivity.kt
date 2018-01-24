@@ -5,17 +5,20 @@ import android.content.res.Configuration
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.transition.Transition
 import android.view.View
 import android.widget.ImageView
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.VideoDetailContract
 import com.android.mykotlinmvp.mvp.presenter.VideoDetailPresenter
+import com.android.mykotlinmvp.ui.adapter.VideoDetailAdapter
 import com.android.mykotlinmvp.ui.base.BaseActivity
 import com.android.mykotlinmvp.utils.Constants
 import com.android.mykotlinmvp.utils.SpUtil
 import com.android.mykotlinmvp.view.VideoPlayerListener
 import com.android.mykotlinmvp.view.glide.GlideApp
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
@@ -23,6 +26,7 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
 import kotlinx.android.synthetic.main.activity_video_detail.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 @SuppressLint("SimpleDateFormat")
 /**
@@ -44,6 +48,8 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
     private var mOrientationUtils : OrientationUtils? = null
     private var mIsPlay = false
     private var mIsPause = false
+    private var mDatas = ArrayList<HomeBean.Issue.Item>()
+    private lateinit var mAdapter: VideoDetailAdapter
 
     override fun showLoading() {
     }
@@ -57,12 +63,25 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
     }
 
     override fun setRelativeVideos(items: ArrayList<HomeBean.Issue.Item>) {
+        mDatas.addAll(items)
+        mAdapter.notifyItemRangeChanged(1,items.size)
     }
 
     override fun setListBackground(imgUrl: String) {
+        GlideApp.with(this)
+                .load(imgUrl)
+                .centerCrop()
+                .transition(DrawableTransitionOptions().crossFade())
+                .into(mListBackground)
     }
 
     override fun setVideoInfo(info: HomeBean.Issue.Item) {
+        mDatas.clear()
+        mDatas.add(info)
+        mAdapter = VideoDetailAdapter(this, mDatas)
+        mRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        mRecyclerView.adapter = mAdapter
+        mPresenter.loadRelativeVideo(info.data?.id!!)
     }
 
     override fun setErrorMsg(errorMsg: String) {
@@ -74,7 +93,6 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
 
         // 保存观看记录
         saveWatchHistory(mVideoData)
-
     }
 
 

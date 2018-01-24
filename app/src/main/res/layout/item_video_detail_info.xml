@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_ivdi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:maxLines="1"
+            tools:text="对不起，你的爱想毒舌一样"
+            />
+
+        <TextView
+            android:id="@+id/tv_ivdi_category_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="#动画/222"
+            android:textSize="15sp"
+            android:textColor="@android:color/darker_gray"
+            />
+
+        <TextView
+            android:id="@+id/tv_ivdi_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/darker_gray"
+            tools:text="爱是人类最伟大的力量。用力过猛的话，越会让 TA 喘不过气。这条「Morning coffee」来自法国巴黎 Gobelins 动画学院的五名学生，耗时五个月完成，完美刻画了「毒液」般的爱情。From gobelins"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/tv_ivdi_love"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/ic_action_favorites"
+                android:drawablePadding="10dp"
+                tools:text="222"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                />
+            <TextView
+                android:id="@+id/tv_ivdi_share"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/ic_action_share"
+                android:drawablePadding="10dp"
+                tools:text="222"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                />
+            <TextView
+                android:id="@+id/tv_ivdi_comment"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/ic_action_reply"
+                android:drawablePadding="10dp"
+                tools:text="222"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                />
+            <TextView
+                android:id="@+id/tv_ivdi_offline"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/ic_action_offline"
+                android:drawablePadding="10dp"
+                tools:text="222"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_ivdi_author_header"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/iv_ivdi_author_header"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                >
+
+                <TextView
+                    android:id="@+id/tv_ivdi_author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    tools:text="开眼动画"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_ivdi_author_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:maxLines="1"
+                    android:textColor="@android:color/darker_gray"
+                    tools:text="有趣的人永远不缺童心"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_ivdi_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_btn_radius_normal_bg"
+                android:textColor="@android:color/white"
+                android:text="+  关注"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

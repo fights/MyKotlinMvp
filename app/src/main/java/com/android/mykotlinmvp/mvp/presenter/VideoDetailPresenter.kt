@@ -1,5 +1,6 @@
 package com.android.mykotlinmvp.mvp.presenter
 
+import android.util.Log
 import com.android.mykotlinmvp.mvp.BasePresenter
 import com.android.mykotlinmvp.mvp.contract.VideoDetailContract
 import com.android.mykotlinmvp.mvp.model.VideoDetailModel
@@ -58,6 +59,7 @@ class VideoDetailPresenter : VideoDetailContract.Presenter, BasePresenter<VideoD
             mRootView?.showLoading()
             videoDetailModel.getRelativeVideos(id)
                     .subscribe({ issue ->
+                        Log.e("VideoDetailPresenter", issue.toString())
                         mRootView?.apply {
                             dismissLoading()
                             setRelativeVideos(issue.itemList)
