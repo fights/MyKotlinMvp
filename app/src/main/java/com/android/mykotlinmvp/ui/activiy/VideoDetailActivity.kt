@@ -12,12 +12,14 @@ import android.widget.ImageView
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.VideoDetailContract
 import com.android.mykotlinmvp.mvp.presenter.VideoDetailPresenter
+import com.android.mykotlinmvp.showToast
 import com.android.mykotlinmvp.ui.adapter.VideoDetailAdapter
 import com.android.mykotlinmvp.ui.base.BaseActivity
 import com.android.mykotlinmvp.utils.Constants
 import com.android.mykotlinmvp.utils.SpUtil
 import com.android.mykotlinmvp.view.VideoPlayerListener
 import com.android.mykotlinmvp.view.glide.GlideApp
+import com.android.mykotlinmvp.view.recyclerview.OnRelativeVideoItemClickListener
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
@@ -79,12 +81,19 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
         mDatas.clear()
         mDatas.add(info)
         mAdapter = VideoDetailAdapter(this, mDatas)
+        mAdapter.onRelativeVideoClickListener = object : OnRelativeVideoItemClickListener{
+            override fun onItemClick(videoData: HomeBean.Issue.Item) {
+                mVideoData = videoData
+                loadVideoInfo()
+            }
+        }
         mRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mRecyclerView.adapter = mAdapter
         mPresenter.loadRelativeVideo(info.data?.id!!)
     }
 
     override fun setErrorMsg(errorMsg: String) {
+        showToast(errorMsg)
     }
 
     override fun init() {

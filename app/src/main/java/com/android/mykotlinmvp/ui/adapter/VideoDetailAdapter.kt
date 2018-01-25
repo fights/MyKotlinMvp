@@ -3,12 +3,14 @@ package com.android.mykotlinmvp.ui.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.utils.Util
 import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.BaseAdapter
 import com.android.mykotlinmvp.view.recyclerview.MultipleType
+import com.android.mykotlinmvp.view.recyclerview.OnRelativeVideoItemClickListener
 import com.android.mykotlinmvp.view.recyclerview.ViewHolder
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 
@@ -28,6 +30,8 @@ class VideoDetailAdapter(context: Context, var datas: ArrayList<HomeBean.Issue.I
 })
 
 {
+
+    var onRelativeVideoClickListener: OnRelativeVideoItemClickListener? = null
 
     @SuppressLint("SetTextI18n")
     override fun bindData(holder: ViewHolder, data: HomeBean.Issue.Item, position: Int) {
@@ -77,12 +81,17 @@ class VideoDetailAdapter(context: Context, var datas: ArrayList<HomeBean.Issue.I
                     val ivFeed = getView<ImageView>(R.id.iv_ivdsc_feed)
                     val tvTitle = getView<TextView>(R.id.tv_ivdsc_title)
                     val tvCatgoryTime = getView<TextView>(R.id.tv_ivdsc_catgory_time)
+                    val videoItem = getView<RelativeLayout>(R.id.rl_ivdsc_video_item)
                     tvTitle.text = data.data?.title
                     tvCatgoryTime.text = "#${data.data?.category}/${Util.durationFormat(data.data?.duration!!)}"
                     GlideApp.with(mContext)
                             .load(data.data.cover.feed)
                             .centerCrop()
                             .into(ivFeed)
+
+                    videoItem.setOnClickListener {
+                        onRelativeVideoClickListener?.onItemClick(data)
+                    }
                 }
             }
         }
