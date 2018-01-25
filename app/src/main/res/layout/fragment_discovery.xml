@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="discovery"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
+    //ToolBar 标题
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_fd_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发 现"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    //切换栏
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:tl_indicator_anim_enable="true"
+        app:tl_textBold="SELECT"
+        tl:tl_bar_color="#ffffff"
+        tl:tl_indicator_color="#F6CE59"
+        tl:tl_indicator_margin_bottom="2dp"
+        tl:tl_indicator_margin_left="2dp"
+        tl:tl_indicator_margin_right="2dp"
+        tl:tl_indicator_margin_top="2dp"
         />
 
-</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray" />
+
+    <com.android.multiple_state_view.MultipleStatusView
+        android:id="@+id/multipleStatusView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:emptyVIew="@layout/layout_empty_view"
+        app:noNetworkVIew="@layout/layout_network_view"
+        app:loadingVIew="@layout/layout_loading_view"
+        app:errorVIew="@layout/layout_error_view"
+        >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.android.multiple_state_view.MultipleStatusView>
+
+
+
+</LinearLayout>
