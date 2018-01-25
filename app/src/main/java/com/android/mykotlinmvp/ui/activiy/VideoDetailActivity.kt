@@ -22,6 +22,7 @@ import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.OnRelativeVideoItemClickListener
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import com.scwang.smartrefresh.header.MaterialHeader
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
@@ -52,11 +53,13 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
     private var mIsPause = false
     private var mDatas = ArrayList<HomeBean.Issue.Item>()
     private lateinit var mAdapter: VideoDetailAdapter
+    private lateinit var mRefreshHeader: MaterialHeader
 
     override fun showLoading() {
     }
 
     override fun dismissLoading() {
+        mRefreshLayout.finishRefresh()
     }
 
     override fun setVideo(url: String) {
@@ -131,6 +134,14 @@ class VideoDetailActivity : BaseActivity(),VideoDetailContract.View {
 
         //初始化播放器
         initVideoPlayer()
+
+        //初始化下拉刷新控件
+        mRefreshLayout.setOnRefreshListener{
+            mPresenter.loadVideoInfo(mVideoData)
+        }
+        mRefreshHeader = mRefreshLayout.refreshHeader as MaterialHeader
+        mRefreshHeader.setShowBezierWave(true)
+        mRefreshHeader.setColorSchemeColors(R.color.color_light_black, R.color.color_title_bg)
     }
 
 
