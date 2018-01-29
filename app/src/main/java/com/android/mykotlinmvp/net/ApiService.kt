@@ -1,5 +1,6 @@
 package com.android.mykotlinmvp.net
 
+import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import io.reactivex.Flowable
 import retrofit2.http.GET
@@ -41,4 +42,10 @@ interface ApiService{
      */
     @GET
     fun getMoreData(@Url url: String): Flowable<HomeBean.Issue>
+
+    /**
+     * 获取分类信息
+     */
+    @GET("v4/categories")
+    fun getCategoryInfo(): Flowable<ArrayList<CategoryBean>>
 }
