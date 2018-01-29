@@ -25,7 +25,7 @@ class FollowPresenter : FollowContract.Preference, BasePresenter<FollowContract.
                 }, { it ->
                     mRootView?.apply {
                         dismissLoading()
-                        showErrorMsg(ExceptionHandle.handleException(it))
+                        showErrorMsg(ExceptionHandle.handleException(it),ExceptionHandle.errorCode)
                     }
                 })
 
@@ -49,7 +49,7 @@ class FollowPresenter : FollowContract.Preference, BasePresenter<FollowContract.
                         it ->
                         mRootView?.apply {
                             dismissLoading()
-                            showErrorMsg(ExceptionHandle.handleException(it))
+                            showErrorMsg(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
                         }
                     })
         }

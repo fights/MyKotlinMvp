@@ -18,7 +18,7 @@ interface FollowContract{
         /**
          * 显示错误信息
          */
-        fun showErrorMsg(errorMsg: String)
+        fun showErrorMsg(errorMsg: String, errorCode: Int)
 
         fun showMoreFollowVideo(issue: HomeBean.Issue)
     }

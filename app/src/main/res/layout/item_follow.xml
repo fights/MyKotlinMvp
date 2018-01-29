@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:orientation="vertical">
+
+    <!-- item 标题信息 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_if_author_header"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/iv_if_author_header"
+            android:layout_toLeftOf="@+id/btn_if_attention"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/tv_if_author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                tools:text="开眼动画"
+                />
+
+            <TextView
+                android:id="@+id/tv_if_author_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:maxLines="1"
+                android:textColor="@android:color/darker_gray"
+                tools:text="有趣的人永远不缺童心"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_if_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_btn_radius_black_bg"
+            android:textColor="@android:color/black"
+            android:text="+  关注"
+            />
+    </RelativeLayout>
+
+    <!-- 横向滑动列表 -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_if_horizontal_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"
+        />
+
+</LinearLayout>

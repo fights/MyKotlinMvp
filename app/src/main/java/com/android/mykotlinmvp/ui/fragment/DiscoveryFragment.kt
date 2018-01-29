@@ -40,6 +40,8 @@ class DiscoveryFragment : BaseFragment() {
 
         viewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragments,mTitles)
         tabLayout.setupWithViewPager(viewPager)
+
+        mMutipleStatusView = multipleStatusView
     }
 
 }
