@@ -28,4 +28,17 @@ interface ApiService{
      */
     @GET("v4/video/related?")
     fun getRelativeVideos(@Query("id") id: Long): Flowable<HomeBean.Issue>
+
+    /**
+     * 关注
+     */
+    @GET("v4/tabs/follow")
+    fun getFollowInfo(): Flowable<HomeBean.Issue>
+
+
+    /**
+     * 获取更多数据
+     */
+    @GET
+    fun getMoreData(@Url url: String): Flowable<HomeBean.Issue>
 }

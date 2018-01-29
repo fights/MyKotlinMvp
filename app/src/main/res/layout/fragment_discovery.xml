@@ -36,18 +36,13 @@
     </android.support.v7.widget.Toolbar>
 
     //切换栏
-    <com.flyco.tablayout.SegmentTabLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:tl_indicator_anim_enable="true"
-        app:tl_textBold="SELECT"
-        tl:tl_bar_color="#ffffff"
-        tl:tl_indicator_color="#F6CE59"
-        tl:tl_indicator_margin_bottom="2dp"
-        tl:tl_indicator_margin_left="2dp"
-        tl:tl_indicator_margin_right="2dp"
-        tl:tl_indicator_margin_top="2dp"
+        app:tabSelectedTextColor="@android:color/black"
+        app:tabTextColor="@color/color_gray"
+        app:tabIndicatorColor="@android:color/black"
         />
 
     <View
