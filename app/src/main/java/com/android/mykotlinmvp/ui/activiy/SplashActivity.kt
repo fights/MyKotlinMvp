@@ -32,31 +32,35 @@ class SplashActivity : BaseActivity() {
         textTypeface = Typeface.createFromAsset(MyApplication.context.assets, "fonts/Lobster-1.4.otf")
         descTypeFace = Typeface.createFromAsset(MyApplication.context.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
 
-        //申请需要用到的权限
-        requestPermission()
     }
 
     private fun requestPermission() {
-        val permissionItems = arrayListOf<PermissionItem>(PermissionItem(Manifest.permission.READ_PHONE_STATE, "手机状态", R.drawable.permission_ic_phone))
+        val permissionItems = arrayListOf<PermissionItem>(
+                PermissionItem(Manifest.permission.READ_PHONE_STATE, "手机状态", R.drawable.permission_ic_phone)
+                , PermissionItem(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,"sd卡", R.drawable.permission_ic_storage))
         HiPermission.create(this)
                 .msg("为了能够正常使用应用，若拒绝，可能会造成应用的无法正常使用")
                 .permissions(permissionItems)
                 .checkMutiPermission(object : PermissionCallback{
                     override fun onFinish() {
                         Logger.d("权限获取成功")
+
+                        jumpHomeActivity()
                     }
 
                     override fun onDeny(permission: String?, position: Int) {
                         Logger.e("permission onDeny , permission = " + permission)
+                        finish()
                     }
 
                     override fun onGuarantee(permission: String?, position: Int) {
                         Logger.e("permission onGuarantee , permission = " + permission)
+                        finish()
                     }
 
                     override fun onClose() {
                         Logger.e("读取手机状态权限被关闭，请到应用管理中手动打开 ")
-
+                        finish()
                     }
 
                 })
@@ -80,8 +84,8 @@ class SplashActivity : BaseActivity() {
 
             override fun onAnimationEnd(animation: Animation?) {
 
-                //动画结束，跳转到home界面
-                jumpHomeActivity()
+                //申请需要用到的权限
+                requestPermission()
             }
 
             override fun onAnimationStart(animation: Animation?) {
