@@ -112,4 +112,5 @@ dependencies {
     implementation("com.shuyu:GSYVideoPlayer:$dependVersion.video_player_version") {
         exclude group: 'com.android.support', module: 'support-v4'
     }
+    implementation "com.android.support:cardview-v7:$dependVersion.androidSupportSdkVersion"
 }

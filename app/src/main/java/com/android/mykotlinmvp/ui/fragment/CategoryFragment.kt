@@ -1,18 +1,24 @@
 package com.android.mykotlinmvp.ui.fragment
 
+import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.CategoryContract
 import com.android.mykotlinmvp.mvp.presenter.CategoryPresenter
+import com.android.mykotlinmvp.ui.adapter.CategoryAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
 import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
+import kotlinx.android.synthetic.main.layout_recycler_view.*
 
 /**
  * Created by zhangguanjun on 2018/1/27.
  */
 class CategoryFragment : BaseFragment(),CategoryContract.View {
     private val mPresenter by lazy { CategoryPresenter() }
+    private lateinit var mCategoryAdapter: CategoryAdapter
 
     override fun showLoading() {
 
@@ -23,7 +29,20 @@ class CategoryFragment : BaseFragment(),CategoryContract.View {
     }
 
     override fun showCategory(categoryList: ArrayList<CategoryBean>) {
-      Log.e("data", categoryList.toString())
+        mCategoryAdapter = CategoryAdapter(activity!!,categoryList,R.layout.item_category)
+        val layoutManager = GridLayoutManager(activity, 2)
+        layoutManager.orientation = GridLayoutManager.VERTICAL
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = mCategoryAdapter
+        recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                val position = parent.getChildPosition(view)
+                val offset = 10
+
+                outRect.set(if (position % 2 == 0) 0 else offset, offset,
+                        if (position % 2 == 0) offset else 0, offset)
+            }
+        })
     }
 
     override fun showErrorMsg(msg: String, errorCode: Int) {
@@ -54,6 +73,7 @@ class CategoryFragment : BaseFragment(),CategoryContract.View {
 
     override fun initView() {
         mPresenter.attachView(this)
+        mMutipleStatusView = multipleStatusView
     }
 
     override fun onDestroy() {
