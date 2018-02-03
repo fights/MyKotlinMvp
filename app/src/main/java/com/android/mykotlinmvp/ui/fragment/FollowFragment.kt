@@ -31,9 +31,9 @@ class FollowFragment : BaseFragment(), FollowContract.View{
 
     override fun showFollowVideo(issue: HomeBean.Issue) {
         mData = issue.itemList
-        follow_recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         mAdapter = FollowAdapter(activity!!, mData, R.layout.item_follow)
-        follow_recyclerView.adapter = mAdapter
+        recyclerView.adapter = mAdapter
     }
 
     override fun showErrorMsg(errorMsg: String, errorCode: Int) {
@@ -69,13 +69,13 @@ class FollowFragment : BaseFragment(), FollowContract.View{
     }
 
     override fun initListener() {
-        follow_recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    val layoutManager = follow_recyclerView.layoutManager as LinearLayoutManager
+                    val layoutManager = recyclerView!!.layoutManager as LinearLayoutManager
                     val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
                     val itemCount = layoutManager.itemCount
-                    val childCount = follow_recyclerView.childCount
+                    val childCount = recyclerView.childCount
                     if ((itemCount == firstVisibleItemPosition + childCount) && !mIsOnLoading) {
                         mIsOnLoading = true
                         mPresenter.loadMoreData()
