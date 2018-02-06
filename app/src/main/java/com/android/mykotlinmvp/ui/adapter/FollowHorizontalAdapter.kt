@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.android.mykotlinmvp.R
-import com.android.mykotlinmvp.ui.activiy.VideoDetailActivity
+import com.android.mykotlinmvp.ui.activity.VideoDetailActivity
 import com.android.mykotlinmvp.utils.Util
 import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.BaseAdapter

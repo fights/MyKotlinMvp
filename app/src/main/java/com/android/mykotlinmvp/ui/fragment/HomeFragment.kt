@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.HomeContract
 import com.android.mykotlinmvp.mvp.presenter.HomePresenter
-import com.android.mykotlinmvp.ui.activiy.SearchActivity
+import com.android.mykotlinmvp.ui.activity.SearchActivity
 import com.android.mykotlinmvp.ui.adapter.HomeAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean

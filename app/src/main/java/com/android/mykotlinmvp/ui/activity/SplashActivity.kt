@@ -1,4 +1,4 @@
-package com.android.mykotlinmvp.ui.activiy
+package com.android.mykotlinmvp.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint

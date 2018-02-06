@@ -12,7 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.android.mykotlinmvp.R
-import com.android.mykotlinmvp.ui.activiy.VideoDetailActivity
+import com.android.mykotlinmvp.ui.activity.VideoDetailActivity
 import com.android.mykotlinmvp.view.glide.GlideApp
 import com.android.mykotlinmvp.view.recyclerview.BaseAdapter
 import com.android.mykotlinmvp.view.recyclerview.ViewHolder

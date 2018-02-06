@@ -1,4 +1,4 @@
-package com.android.mykotlinmvp.ui.activiy
+package com.android.mykotlinmvp.ui.activity
 
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.ui.base.BaseActivity

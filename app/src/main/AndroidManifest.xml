@@ -18,7 +18,7 @@
         android:name=".MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.activiy.SplashActivity"
+        <activity android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen"
             >
@@ -29,13 +29,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activiy.MainActivity"
+        <activity android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activiy.VideoDetailActivity"
+        <activity android:name=".ui.activity.VideoDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
-        <activity android:name=".ui.activiy.SearchActivity"
+        <activity android:name=".ui.activity.SearchActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.activity.CategoryDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
