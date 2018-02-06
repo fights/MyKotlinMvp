@@ -10,6 +10,7 @@ import com.android.mykotlinmvp.mvp.contract.CategoryContract
 import com.android.mykotlinmvp.mvp.presenter.CategoryPresenter
 import com.android.mykotlinmvp.ui.adapter.CategoryAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
+import com.android.mykotlinmvp.utils.Util
 import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 
@@ -37,7 +38,7 @@ class CategoryFragment : BaseFragment(),CategoryContract.View {
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                 val position = parent.getChildPosition(view)
-                val offset = 10
+                val offset = Util.dp2Px(5)
 
                 outRect.set(if (position % 2 == 0) 0 else offset, offset,
                         if (position % 2 == 0) offset else 0, offset)
