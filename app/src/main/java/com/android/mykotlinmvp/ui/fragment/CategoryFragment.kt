@@ -1,5 +1,6 @@
 package com.android.mykotlinmvp.ui.fragment
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -8,9 +9,11 @@ import android.view.View
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.CategoryContract
 import com.android.mykotlinmvp.mvp.presenter.CategoryPresenter
+import com.android.mykotlinmvp.ui.activity.CategoryDetailActivity
 import com.android.mykotlinmvp.ui.adapter.CategoryAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
 import com.android.mykotlinmvp.utils.Util
+import com.android.mykotlinmvp.view.recyclerview.OnItemClickListener
 import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 
@@ -42,6 +45,17 @@ class CategoryFragment : BaseFragment(),CategoryContract.View {
 
                 outRect.set(if (position % 2 == 0) 0 else offset, offset,
                         if (position % 2 == 0) offset else 0, offset)
+            }
+        })
+
+        mCategoryAdapter.setOnItemClickListener(object : OnItemClickListener{
+            override fun onItemClick(obj: Any?, position: Int) {
+
+                //点击条目跳转到详情页面
+                val data = obj as CategoryBean
+                val intent = Intent(activity, CategoryDetailActivity::class.java)
+                intent.putExtra(CategoryDetailActivity.CATEGORY_ID,data.id)
+                startActivity(intent)
             }
         })
     }
