@@ -48,4 +48,16 @@ interface ApiService{
      */
     @GET("v4/categories")
     fun getCategoryInfo(): Flowable<ArrayList<CategoryBean>>
+
+    /**
+     * 分类详情
+     */
+    @GET("v4/categories/videoList")
+    fun getCategoryDetailInfo(@Query("id") id: Long): Flowable<HomeBean.Issue>
+
+    /**
+     * 分类详情更多数据
+     */
+    @GET
+    fun getCategoryDetailMoreInfo(@Url url: String): Flowable<HomeBean.Issue>
 }

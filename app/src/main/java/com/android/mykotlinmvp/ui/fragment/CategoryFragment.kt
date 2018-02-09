@@ -54,7 +54,7 @@ class CategoryFragment : BaseFragment(),CategoryContract.View {
                 //点击条目跳转到详情页面
                 val data = obj as CategoryBean
                 val intent = Intent(activity, CategoryDetailActivity::class.java)
-                intent.putExtra(CategoryDetailActivity.CATEGORY_ID,data.id)
+                intent.putExtra(CategoryDetailActivity.CATEGORY_INFO,data)
                 startActivity(intent)
             }
         })
