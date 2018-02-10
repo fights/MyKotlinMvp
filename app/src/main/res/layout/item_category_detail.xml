@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_icd_feed"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:scaleType="fitXY"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="#5000" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/tv_icd_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_icd_category_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="15sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="3dp"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
