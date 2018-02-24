@@ -2,6 +2,7 @@ package com.android.mykotlinmvp.net
 
 import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -60,4 +61,17 @@ interface ApiService{
      */
     @GET
     fun getCategoryDetailMoreInfo(@Url url: String): Flowable<HomeBean.Issue>
+
+    /**
+     * 获取热门tab信息
+     */
+    @GET("v4/rankList")
+    fun getHotTabInfo(): Flowable<TabInfoBean>
+
+    /**
+     * 获取热门中每个tab中对应的详细信息
+     */
+    @GET
+    fun getRankData(@Url url: String): Flowable<HomeBean.Issue>
+
 }

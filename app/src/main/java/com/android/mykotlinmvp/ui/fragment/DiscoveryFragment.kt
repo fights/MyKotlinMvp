@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_discovery.*
 class DiscoveryFragment : BaseFragment() {
 
     private var mTitle: String? = null
-    private var mTitles = arrayOf("关注","分类")
+    private var mTitles = arrayListOf("关注","分类")
     private val mFragments = ArrayList<Fragment>()
 
     companion object {

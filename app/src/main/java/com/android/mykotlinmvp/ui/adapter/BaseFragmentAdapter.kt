@@ -11,9 +11,9 @@ class BaseFragmentAdapter : FragmentPagerAdapter {
 
     private var mFragmentManager: FragmentManager? = null
     private var mFragments: ArrayList<Fragment>? = null
-    private var mTitles: Array<String>? = null
+    private var mTitles: ArrayList<String>? = null
 
-    constructor(fragmentManager: FragmentManager, fragments: ArrayList<Fragment>, titles: Array<String>) : super(fragmentManager){
+    constructor(fragmentManager: FragmentManager, fragments: ArrayList<Fragment>, titles: ArrayList<String>) : super(fragmentManager){
         this.mTitles = titles
         mFragmentManager = fragmentManager
         mFragments = fragments
