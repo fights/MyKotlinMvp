@@ -5,9 +5,11 @@ import android.support.v7.widget.LinearLayoutManager
 import com.android.mykotlinmvp.R
 import com.android.mykotlinmvp.mvp.contract.RankContract
 import com.android.mykotlinmvp.mvp.presenter.RankPresenter
+import com.android.mykotlinmvp.showToast
 import com.android.mykotlinmvp.ui.adapter.CategoryDetailAdapter
 import com.android.mykotlinmvp.ui.base.BaseFragment
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import com.hazz.kotlinmvp.net.exception.ErrorStatus
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 
 /**
@@ -35,6 +37,12 @@ class RankFragment : BaseFragment(), RankContract.View {
     }
 
     override fun showErrorMsg(errorMsg: String, errorCode: Int) {
+        showToast(errorMsg)
+
+        when (errorCode) {
+            ErrorStatus.NETWORK_ERROR -> mMutipleStatusView?.showNoNetwork()
+            else -> mMutipleStatusView?.showError()
+        }
     }
 
     private lateinit var mDataUrl: String
